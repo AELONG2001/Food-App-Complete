@@ -1,0 +1,38 @@
+.Toastify__toast-theme--light {
+    background-color: #3598DB !important;
+}
+
+.toast__box {
+    display: flex;
+    align-items: center;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    &-icon {
+        position: relative;
+        background-color: #fff;
+        transform: translateY(-10px);
+        & svg {   
+           position: absolute;
+           color: #3598db;
+           background-color: #fff;
+           width: 1.6rem;
+           height: 1.6rem;
+           border-radius: 50%;
+           padding: 3px;
+        }
+    }
+    &-content {
+        margin: 10px 0 10px 40px;
+        & h4 {
+            color: #fff;
+            font-size: 1.6rem;
+            line-height: 1.8rem;
+        }
+        & p {
+           color: #fff;
+           font-size: 1.3rem;
+           line-height: 1.8rem;
+           margin-top: 6px;
+        }
+    }
+}

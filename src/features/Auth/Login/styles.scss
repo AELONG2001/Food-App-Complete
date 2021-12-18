@@ -1,0 +1,186 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+@mixin d-flex {
+    display: flex !important;
+    align-items: center !important;
+    display: -webkit-flex !important;
+    -webkit-align-items: center !important;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+@mixin positionCenter {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//custom css facebook
+.kep-login-facebook {
+    font-family: 'Roboto', sans-serif !important;
+    @include d-flex;
+    position: relative !important;
+    width: 280px !important;
+    height: 48px !important;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    padding: 10px !important;
+    border-radius: 30px !important;
+    text-transform: capitalize !important;
+    color: $primary-black-color !important;
+    background-color: $primary-white-color !important;
+    border: 0.2rem solid #dce0e3 !important;
+    user-select: none;
+}
+
+.form__login {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  &-box {
+    position: absolute;
+    @include positionCenter;
+    width: 600px;
+    height: 80%;
+    background-color: $primary-white-color;
+    border-radius: 8px;
+    z-index: 100;
+    &-img {
+        width: 72px;
+        height: 72px;
+        margin: 30px auto 10px auto;
+    }
+
+    &-heading {
+        & h3 {
+            font-family: Montserrat;
+            color: $primary-black-color;
+            text-align: center;
+            font-size: 2.8rem;
+            margin: 10px 0;
+        }
+    }
+
+    &__main {
+        @include d-flex;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        margin-top: 40px;
+
+        &-input {
+            font-size: 1.5rem !important;
+            width: 280px !important;
+            height: 44px !important;
+            padding: 0 0 0 16px !important;
+        }
+
+        &-button {
+            font-size: 1.6rem !important;
+            min-width: 280px !important;
+            height: 44px !important;
+            border-radius: 30px !important;
+            margin-top: 10px !important;
+        }
+
+    }
+
+    &-content {
+        position: absolute;
+        @include positionCenter;
+        @include d-flex;
+        flex-direction: column;
+        margin-top: 10px;
+       &-p {
+           position: relative;
+            @include d-flex;
+            width: 280px;
+            height: 44px;
+            margin: 0 auto;
+            border-radius: 30px;
+            text-align: center;
+            border: 0.2rem solid #dce0e3 !important;
+            user-select: none;
+            cursor: pointer;
+            & img {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 2rem;
+                padding-right: 2rem;
+            }
+            & span {
+                position: absolute;
+                top: 50%;
+                left: 60%;
+                transform: translate(-50%, -50%);
+                min-width: 200px;
+                color: $primary-black-color;
+                font-size: 1.5rem;
+                font-weight: 500;
+                text-align: start;
+            }
+       }
+
+       &-g {
+            position: relative;
+            @include d-flex;
+            width: 280px;
+            height: 44px;
+            margin: 16px auto;
+            border-radius: 30px;
+            text-align: center;
+            border: 0.2rem solid #dce0e3 !important;
+            user-select: none;
+            cursor: pointer;
+            & img {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 2rem;
+            }
+            & span {
+                position: absolute;
+                top: 50%;
+                left: 60%;
+                transform: translate(-50%, -50%);
+                min-width: 200px;
+                color: $primary-black-color;
+                font-size: 1.5rem;
+                font-weight: 500;
+                text-align: start;
+            }
+       }
+    }
+
+    &-help {
+        text-align: center;
+        margin-top: 24px;
+        & p {
+            color: $disabled-color;
+            font-size: 1.5rem;
+            line-height: 1.7rem;
+            user-select: none;
+            & span {
+                color: $primary-red-color;
+                font-weight: 500;
+                padding-left: 4px;
+                cursor: pointer;
+            }
+        }
+
+    }
+  }
+}
+
+
+//custom Toastify
+.Toastify {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+

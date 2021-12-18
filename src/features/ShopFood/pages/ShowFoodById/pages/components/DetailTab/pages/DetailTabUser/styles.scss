@@ -1,0 +1,73 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.detail-tab-user {
+  margin-top: 80px;
+  display: flex;
+
+  &__avatar {
+    @include respond(desktop) {
+      width: 4.7rem;
+      height: 4.7rem;
+      margin-top: 3px;
+    }
+  }
+
+  &__form {
+    margin-left: 20px;
+    flex-basis: 60%;
+
+    @include respond(mobile) {
+      flex: 1;
+    }
+
+    @include respond(phone) {
+      margin-left: 15px;
+    }
+  }
+
+  &__row {
+    color: #fbb403 !important;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__rate svg {
+    font-size: 1.85rem;
+
+    cursor: pointer;
+  }
+
+  &__msg {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  &__textarea {
+    padding: 15px;
+    outline: 0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    width: 100%;
+    height: 10rem;
+    margin-bottom: 20px;
+    font-family: "Roboto", sans-serif;
+    resize: none;
+
+    background-color: rgba(0, 0, 0, 0.03);
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  &__textarea::-webkit-scrollbar {
+    display: none;
+  }
+
+  & &__submit {
+    text-transform: capitalize;
+    padding: 7px 13px !important;
+  }
+}

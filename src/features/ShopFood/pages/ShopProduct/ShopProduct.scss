@@ -1,0 +1,364 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.shop-product {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(20rem,1fr));
+  grid-gap: 15px;
+  padding: 22px 0 30px 20px;
+  margin-right: 24px;
+  position: relative;
+  cursor: pointer;
+
+  &__img-wrapper {
+    position: relative;
+
+    height: 16.5rem;
+    text-align: center;
+
+    @include respond(tablet) {
+      height: 18.5rem;
+    }
+
+    @include respond(phone) {
+      height: 16.5rem;
+    }
+  }
+
+  &__rate {
+    position: absolute;
+    bottom: 0;
+    left: 3.5px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__rate span {
+    font-size: 3rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.45);
+
+    color: $primary-white-color;
+  }
+
+  &__rate svg {
+    width: 1.85rem;
+    height: 1.85rem;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.45));
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.45));
+
+    fill: $primary-white-color;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin: 8px 0 6px;
+    transition: color 0.15s ease-out;
+
+    @include respond(phone) {
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+    }
+  }
+
+  @media (hover: hover) {
+    &__name:hover {
+      color: $primary-red-color;
+    }
+  }
+
+  &__description {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    min-height: 4rem;
+
+    @include respond(phone) {
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    margin-left: -1px;
+  }
+
+  &__location svg {
+    font-size: 1.8rem;
+    margin-right: 1px;
+
+    fill: $primary-red-color;
+
+    @include respond(phone) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__location span {
+    font-size: 1.3rem;
+    width: 85%;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+
+    @include respond(phone) {
+      width: 80%;
+    }
+  }
+
+  &__price {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: $primary-red-color;
+  }
+
+  &__btns {
+    position: absolute;
+    top: 7px;
+    right: -3px;
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.15s linear;
+
+    @include respond(mobile) {
+      visibility: visible;
+      opacity: 1;
+      right: 8px;
+    }
+  }
+
+  &_box {
+    position: relative;
+    height: 27.5rem;
+
+  }
+
+  &_box:hover &__btns{
+    visibility: visible;
+    opacity: 1;
+    right: 8px;
+  }
+
+  @media (hover: hover) {
+    &:hover &__btns {
+      
+    }
+  }
+
+  &__btn {
+    border-radius: 50%;
+    width: 2.95rem;
+    height: 2.95rem;
+    text-align: center;
+    margin-bottom: 5px;
+
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+
+  &__btn svg {
+    width: 1.65rem;
+    height: 100%;
+
+    fill: $primary-white-color;
+  }
+
+  @media (hover: hover) {
+    &__btn:hover svg {
+      fill: $primary-red-color;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 10px;
+    left: -3px;
+
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 1.5px 5px;
+    font-weight: 500;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    color: $primary-white-color;
+    background-color: $primary-red-color;
+  }
+
+  &__label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+
+    border-top: 3px solid $primary-red-color;
+    border-left: 3px solid transparent;
+
+    filter: brightness(90%);
+  }
+
+  &__empty {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: center;
+    -webkit-align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 120px;
+    & img {
+      width: 50rem;
+    }
+    & div {
+      font-size: 2.2rem;
+      font-weight: 600;
+      opacity: 0.9;
+      margin-top: 25px;
+      line-height: 1.7;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.shop-products.display-flex {
+  display: flex;
+  flex-direction: column;
+
+  .shop-product {
+    display: flex;
+    margin-bottom: 10px;
+
+    &__img-wrapper {
+      width: 23.5rem;
+      height: 15.5rem;
+      text-align: center;
+    }
+
+    &__content {
+      margin-left: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__name {
+      margin-bottom: 10px;
+    }
+
+    &__row {
+      display: unset;
+      justify-content: unset;
+    }
+
+    &__location {
+      margin: 5px 0 10px -3px;
+    }
+  }
+}
+
+@mixin dFlex() {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
+//custom shopProduct show column
+.shop-product-column.shop-product {
+  @include dFlex;
+  & .shop-product_box {
+    display: flex;
+    display: -webkit-flex;
+    height: unset;
+    margin: 4px 0;
+    & .shop-product_box-main {
+      display: flex;
+      display: -webkit-flex;
+    }
+    & .shop-product__content {
+      @include dFlex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      padding-left: 12px;
+      & .shop-product__description {
+        min-height: unset;
+      }
+      & .shop-product__name {
+        margin: 0;
+      }
+
+      & .shop-product__row {
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        align-items: unset;
+        -webkit-align-items: unset;
+        & .shop-product__location {
+          margin: 0 0 8px -1px;
+        }
+      }
+    }
+  }
+
+  & .shop-product__img-wrapper {
+    & .shop-product__rate {
+      bottom: 10px
+    }
+  }
+}
+
+
+
+//custom pagination
+.MuiPagination-ul {
+  justify-content: center;
+  margin: 40px 0 !important;
+  & li {
+    padding: 0 6px;
+    & button {
+    font-size: 1.5rem;
+    background-color: $primary-white-color;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    & svg {
+      font-size: 1.8rem;
+    }
+  }
+  }
+}
+
+.Mui-selected {
+  color: $primary-white-color !important;
+  background-color: #ff514e !important;
+  border-radius: 4px;
+}
+
+
+
+.d-none {
+  display: none;
+}

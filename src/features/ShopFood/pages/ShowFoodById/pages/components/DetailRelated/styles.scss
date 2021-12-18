@@ -1,0 +1,22 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+
+.related-heading {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: $primary-black-color;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.shop-product__related {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+.shop-product_box-related {
+    width: 200px;
+}

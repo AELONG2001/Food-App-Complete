@@ -1,0 +1,24 @@
+@import "colors";
+@import "mixins";
+
+.primary-yellow-text {
+  font-size: 1.8rem;
+  font-family: "Pangolin", cursive;
+
+  color: $primary-yellow-color;
+
+  @include respond(mobile) {
+    font-size: 1.5rem;
+  }
+}
+
+.primary-heading-text {
+  font-size: 3.2rem;
+  font-weight: bold;
+  margin-top: 19px;
+  color: $primary-black-color;
+
+  @include respond(mobile) {
+    font-size: 2.2rem;
+  }
+}

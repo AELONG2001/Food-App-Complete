@@ -1,0 +1,13 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+
+.cart__box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 450px;
+    height: 100vh;
+    background-color: $primary-white-color;
+    z-index: 120;
+}
