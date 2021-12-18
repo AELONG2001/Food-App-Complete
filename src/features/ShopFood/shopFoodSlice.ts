@@ -7,7 +7,7 @@ export interface ShopFood {
 	loading: boolean;
 	filter: ListParams;
 	list: Food[];
-	foodById: any;
+	foodById: Food[];
 }
 
 const initialState: ShopFood = {
@@ -17,7 +17,7 @@ const initialState: ShopFood = {
 		_limit: 16,
 	},
 	list: [],
-	foodById: null,
+	foodById: [],
 };
 
 const shopFoodSlice = createSlice({
@@ -67,8 +67,7 @@ const shopFoodSlice = createSlice({
 			const listFood = state.list;
 
 			const newFood = listFood.filter((food) => food.id === idFood);
-			const foodId = { ...state.foodById, newFood };
-			state.foodById = foodId;
+			state.foodById = newFood;
 		},
 	},
 });

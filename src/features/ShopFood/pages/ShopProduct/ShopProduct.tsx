@@ -4,20 +4,15 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StarIcon from '@mui/icons-material/Star';
 import { Box, Pagination } from '@mui/material';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-import {
-	selectFoodFilter,
-	selectFoodLoading,
-	shopFoodAction,
-} from 'features/ShopFood/shopFoodSlice';
+import EmptyImg from 'assets/images/empty-shop.e78970f0.svg';
+import { selectFoodFilter, shopFoodAction } from 'features/ShopFood/shopFoodSlice';
 import { Food } from 'models';
-import React from 'react';
+import React, { useState } from 'react';
 // lazy load img js
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 // lazy load img css
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './ShopProduct.scss';
-import EmptyImg from 'assets/images/empty-shop.e78970f0.svg';
-import CircularProgress from '@mui/material/CircularProgress';
 
 export interface ShopProductProps {
 	bestFood: Food[];
@@ -25,9 +20,11 @@ export interface ShopProductProps {
 }
 
 function ShopProduct({ bestFood, getFoodById }: ShopProductProps) {
+	let [amount, setAmount] = useState<number>(1);
+
 	const dispatch = useAppDispatch();
 
-	const loading = useAppSelector(selectFoodLoading);
+	// const loading = useAppSelector(selectFoodLoading);
 	const filter = useAppSelector(selectFoodFilter);
 
 	const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -39,13 +36,14 @@ function ShopProduct({ bestFood, getFoodById }: ShopProductProps) {
 		);
 	};
 
-	const handleGetFoodById = (id: string) => {
+	const handleGetFoodById = (id: string, idx: number) => {
 		dispatch(shopFoodAction.getFoodById(id));
+		setAmount(amount + 1);
 	};
 
 	return (
 		<Box>
-			{loading && (
+			{/* {loading && (
 				<Box
 					sx={{
 						position: 'absolute',
@@ -60,12 +58,12 @@ function ShopProduct({ bestFood, getFoodById }: ShopProductProps) {
 						}}
 					/>
 				</Box>
-			)}
+			)} */}
 			{bestFood.length > 0 ? (
 				<div>
 					<div className="shop-product">
-						{bestFood.map((food) => (
-							<div key={food.id} className="shop-product_box">
+						{bestFood.map((food, idx) => (
+							<div key={idx} className="shop-product_box">
 								<div className="shop-product_box-main" onClick={() => getFoodById(food.id)}>
 									<div className="shop-product__img-wrapper">
 										<LazyLoadImage
@@ -99,7 +97,10 @@ function ShopProduct({ bestFood, getFoodById }: ShopProductProps) {
 									<div className="shop-product__btn">
 										<FavoriteBorderIcon />
 									</div>
-									<div className="shop-product__btn" onClick={() => handleGetFoodById(food.id)}>
+									<div
+										className="shop-product__btn"
+										onClick={() => handleGetFoodById(food.id, idx)}
+									>
 										<ShoppingCartIcon />
 									</div>
 								</div>

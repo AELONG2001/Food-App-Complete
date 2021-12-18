@@ -25,8 +25,8 @@ function App() {
 						<Route path="/login" element={<LoginPage />} />
 					</Routes>
 				</ScrollToTop>
+				<Cart />
 			</Router>
-			<Cart />
 		</>
 	);
 }
