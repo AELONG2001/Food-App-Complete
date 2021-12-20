@@ -1,33 +1,37 @@
-## 🚀Live Demo: 
+<h1 align='center'>Food App 🍕</h1>
 
-### + Technologies
-# TypeScript
-# SASS
-# Material UI
-# 
-# Axios
-# Redux Toolkit
-# Redux Saga
-# Yup
-# React-hook-fom
-# React-router-dom v6
-# React-toastify
-# React-content-loader
-# React-lazy-load-image-component
-# React-google-login
-# React-facebook-login
+#### **🚀 Live Demo:** 
+#### **Technologies**
 
-# Swiper
+- Frontend
 
-### + Folder structure
+  - TypeScript
+  - SASS
+  - Material UI
+  - Axios
 
-### src
-# |__apis
-# |__app
-# |__assets
-# |__components
-# |__constants
-# |__features
-# |__models
-## |__utils
+  - React-router-dom v6
+  - Yup
+  - React-hook-form
+  - React-toastify
+  - React-content-loader
+  - React-lazy-load-image-component
+  - React-google-login
+  - React-facebook-login
+  - Redux Toolkit
+  - Redux Saga
 
+  - Swiper
+
+#### **Folder structure**
+
+```
+src
+|__api
+|__app
+|__assets
+|__components
+|__constants
+|__features
+|__models
+|__utils
