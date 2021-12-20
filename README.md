@@ -2,9 +2,6 @@
 
 #### **🚀 Live Demo:** 
 #### **Technologies**
-
-- Frontend
-
   - TypeScript
   - SASS
   - Material UI
