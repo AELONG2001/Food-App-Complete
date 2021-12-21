@@ -1,6 +1,6 @@
-🚀Live Demo: 
+## 🚀Live Demo: 
 
-+ Technologies
+### + Technologies
  TypeScript
    SASS
    Material UI
@@ -19,8 +19,8 @@
 
    Swiper
 
-+ Folder structure
-src
+### + Folder structure
+### src
 |__apis
 |__app
 |__assets
@@ -30,42 +30,3 @@ src
 |__models
 |__utils
 
-🍺 Live Demo: https://food-g-app.web.app/home
-🍩 Technologies
-Frontend
-
-SCSS
-Material UI
-Axios
-React-router-dom
-Redux-toolkit
-Styled-component
-Swiper
-Gsap
-Yup
-React-hook-form
-React-lazy-load-image-component
-React-paginate
-React-image-magnifiers
-React-toastify
-React-timeago
-React-content-loader
-React-select
-Backend
-
-Firebase (Authentication, Firestore)
-🏨 Folder structure
-src
-|__apis
-|__app
-|__assets
-|__components
-|__configs
-|__constants
-|__contexts
-|__features
-|__hooks
-|__routes
-|__utils
-
-  
