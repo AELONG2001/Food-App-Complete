@@ -1,6 +1,6 @@
 <h1 align='center'>Food App 🍕</h1>
 
-#### **🚀 Live Demo:** https://react-redux-app-95a3f.web.app
+#### **🚀 Live Demo:** https://react-redux-food-app.web.app
 #### **Technologies**
   - TypeScript
   - SASS
