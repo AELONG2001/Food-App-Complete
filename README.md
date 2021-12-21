@@ -1,7 +1,7 @@
 🚀Live Demo: 
 
-+ Technology
-   TypeScript
++ Technologies
+ TypeScript
    SASS
    Material UI
    
@@ -20,15 +20,14 @@
    Swiper
 
 + Folder structure
-  src
-    |__apis
-    |__app
-    |__assets
-    |__components
-    |__constants
-    |__features
-    |__models
-    |__utils
-
+src
+|__apis
+|__app
+|__assets
+|__components
+|__constants
+|__features
+|__models
+|__utils
 
   
