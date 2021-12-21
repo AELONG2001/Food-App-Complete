@@ -60,6 +60,14 @@
 
     -ms-overflow-style: none;
     scrollbar-width: none;
+
+    @include respond(mobile) {
+      width: 95%;
+    }
+
+    @include respond(mobileMedium) {
+      width: 78%;
+    }
   }
 
   &__textarea::-webkit-scrollbar {

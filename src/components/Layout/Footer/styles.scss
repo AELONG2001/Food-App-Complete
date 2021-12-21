@@ -52,6 +52,10 @@
     }
   }
 
+  &__contacts {
+    margin-top: 10px;
+  }
+
   &__contact {
     display: flex;
     align-items: center;
@@ -60,13 +64,13 @@
 
   &__contact-title {
     font-size: 2.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px !important;
 
     color: $primary-white-color;
 
     @include respond(mobile) {
       font-size: 2.2rem;
-      margin-bottom: 15px;
+      margin-bottom: 15px !important;
     }
   }
 

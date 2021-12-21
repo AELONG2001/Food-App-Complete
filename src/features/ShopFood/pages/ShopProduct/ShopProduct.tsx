@@ -1,3 +1,4 @@
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RoomIcon from '@mui/icons-material/Room';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -5,13 +6,16 @@ import StarIcon from '@mui/icons-material/Star';
 import { Box, Pagination } from '@mui/material';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import EmptyImg from 'assets/images/empty-shop.e78970f0.svg';
+import ToastBody from 'components/CustomToast/ToastBody';
 import { selectFoodFilter, shopFoodAction } from 'features/ShopFood/shopFoodSlice';
 import { Food } from 'models';
-import React, { useState } from 'react';
+import React from 'react';
 // lazy load img js
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 // lazy load img css
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { toast } from 'react-toastify';
+import foodApi from 'api/foodApi';
 import './ShopProduct.scss';
 
 export interface ShopProductProps {
@@ -20,8 +24,6 @@ export interface ShopProductProps {
 }
 
 function ShopProduct({ bestFood, getFoodById }: ShopProductProps) {
-	let [amount, setAmount] = useState<number>(1);
-
 	const dispatch = useAppDispatch();
 
 	// const loading = useAppSelector(selectFoodLoading);
@@ -36,9 +38,42 @@ function ShopProduct({ bestFood, getFoodById }: ShopProductProps) {
 		);
 	};
 
-	const handleGetFoodById = (id: string, idx: number) => {
-		dispatch(shopFoodAction.getFoodById(id));
-		setAmount(amount + 1);
+	//React toastify
+	const showToast = () => {
+		return toast(
+			<ToastBody title="Success !" desc="The product has been added to cart" icon={true} />,
+			{
+				position: 'top-left',
+				className: 'background__toast-success',
+				closeButton: (
+					<div
+						style={{
+							position: 'absolute',
+							top: 8,
+							right: 8,
+							color: '#fff',
+						}}
+					>
+						<ExitToAppIcon sx={{ width: '2rem !important', height: '2rem !important' }} />
+					</div>
+				),
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			}
+		);
+	};
+
+	const handleGetFoodById = async (id: string, idx: number) => {
+		const listFoodById = await foodApi.getFoodById(id);
+
+		dispatch(shopFoodAction.getFoodById(listFoodById));
+		dispatch(shopFoodAction.getIdFood(idx));
+
+		showToast();
 	};
 
 	return (

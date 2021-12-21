@@ -4,6 +4,7 @@ import createSagaMiddleware from '@redux-saga/core';
 import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
 import authReducer from 'features/Auth/AuthSlice';
 import cartReducer from 'features/Cart/CartSlice';
+import detailTabReducer from 'features/ShopFood/pages/ShowFoodById/pages/components/DetailTab/DetailTabSlice';
 import shopFoodReducer from 'features/ShopFood/shopFoodSlice';
 import rootSaga from './rootSaga';
 
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
 	food: shopFoodReducer,
 	auth: authReducer,
 	cart: cartReducer,
+	comment: detailTabReducer,
 });
 
 export const store = configureStore({

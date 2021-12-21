@@ -9,13 +9,10 @@ import * as React from 'react';
 
 const useStyles = makeStyles({
 	typoHeading: {
-		fontSize: '5rem !important',
 		textAlign: 'center',
-		fontWeight: '700',
 	},
 
 	review_box: {
-		flexDirection: 'row-reverse',
 		display: 'flex',
 		margin: '60px 0',
 		boxShadow: '0 3px 13px 1px rgb(0 0 0 / 9%) !important',
@@ -28,18 +25,15 @@ const useStyles = makeStyles({
 		margin: 'auto',
 		'& .MuiTypography-h4': {
 			color: 'rgba(0, 0, 0, 0.72) !important',
-			fontSize: '2.3rem',
 		},
 
 		'& .MuiTypography-h5': {
 			color: 'rgba(0, 0, 0, 0.72) !important',
-			fontSize: '2.4rem',
 			margin: '12px 0 4px 0',
 		},
 
 		'& .MuiTypography-body1': {
 			color: 'rgba(0, 0, 0, 0.72) !important',
-			fontSize: '2rem',
 			fontWeight: '500',
 			padding: '0 16px',
 		},
@@ -51,24 +45,38 @@ export default function ReviewContent() {
 
 	return (
 		<Box my={10}>
-			<Typography className={classes.typoHeading} variant="h1">
+			<Typography
+				className={classes.typoHeading}
+				variant="h1"
+				sx={{ fontSize: { md: '5rem', xs: '3rem' }, fontWeight: { md: '400', xs: '600' } }}
+			>
 				What customers say about our restaurant
 			</Typography>
 			{reviewInfos.map((review, idx) => (
-				<Card key={idx} className={classes.review_box}>
+				<Card
+					key={idx}
+					className={classes.review_box}
+					sx={{
+						flexDirection: { md: 'row-reverse', xs: 'column-reverse' },
+						maxWidth: { lg: '100%', md: '600px', sm: '350px', xs: '300px' },
+						margin: { md: '60px 0', xs: '60px auto' },
+					}}
+				>
 					<Box className={classes.box_content}>
 						<CardContent>
-							<Typography variant="h4">
+							<Typography variant="h4" sx={{ fontSize: { md: '2rem', xs: '1.7rem' } }}>
 								<strong>{review.name}</strong>
 								{review.nameDesc}
 							</Typography>
-							<Typography variant="h5">
+							<Typography variant="h5" sx={{ fontSize: { md: '2rem', xs: '1.8rem' } }}>
 								{review.job}
 								<strong>{review.jobDesc}</strong>
 							</Typography>
 						</CardContent>
 						<Box>
-							<Typography variant="body1">{review.desc}</Typography>
+							<Typography variant="body1" sx={{ fontSize: { md: '2rem', xs: '1.6rem' } }}>
+								{review.desc}
+							</Typography>
 						</Box>
 					</Box>
 					<CardMedia

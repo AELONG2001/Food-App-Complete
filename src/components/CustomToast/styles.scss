@@ -1,6 +1,3 @@
-.Toastify__toast-theme--light {
-    background-color: #3598DB !important;
-}
 
 .toast__box {
     display: flex;
@@ -13,7 +10,7 @@
         transform: translateY(-10px);
         & svg {   
            position: absolute;
-           color: #3598db;
+           
            background-color: #fff;
            width: 1.6rem;
            height: 1.6rem;

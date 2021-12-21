@@ -6,7 +6,8 @@
   padding-right: 24px;
 
   @include respond(mobile) {
-    margin-bottom: 20px;
+    margin: 0 10px 20px 10px;
+    padding: 0;
   }
 
   &__search {

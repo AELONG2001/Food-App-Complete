@@ -7,7 +7,7 @@ import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { cartActions, selectShowCart } from './CartSlice';
 import { makeStyles } from '@mui/styles';
-import { selectFoodById } from 'features/ShopFood/shopFoodSlice';
+import { selectFoodById, shopFoodAction } from 'features/ShopFood/shopFoodSlice';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +17,6 @@ import './styles.scss';
 
 const useStyles = makeStyles({
 	headingCart: {
-		fontSize: '2.6rem !important',
 		fontWeight: '600 !important',
 		color: 'rgba(0, 0, 0, 0.84) !important',
 		margin: '0 !important',
@@ -27,6 +26,7 @@ const useStyles = makeStyles({
 	buttonClose: {
 		color: '#ff514e !important',
 		fontSize: '3rem !important',
+		cursor: 'pointer'
 	},
 
 	boxFood: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 	boxTitle: {
 		paddingLeft: '10px',
 		'& .MuiTypography-h5': {
-			fontSize: '1.8rem !important',
+			fontSize: '1.7rem !important',
 			lineHeight: '2rem !important',
 			color: 'rgba(0, 0, 0, 0.84) !important',
 		},
@@ -63,6 +63,7 @@ const useStyles = makeStyles({
 
 	itemDelete: {
 		margin: 'auto 0 auto auto',
+		cursor: 'pointer',
 		'& .MuiSvgIcon-root': {
 			color: '#b2bec3 !important',
 			width: '2.2rem !important',
@@ -71,15 +72,12 @@ const useStyles = makeStyles({
 	},
 
 	buttonCheckout: {
-		position: 'absolute !important' as any,
-		bottom: '30px',
-		left: '50%',
-		transform: 'translateX(-50%)',
-		width: '400px !important',
+		display: 'flex !important',
 		fontSize: '1.5rem !important',
 		color: '#fff !important',
 		backgroundColor: '#ff514e !important',
 		borderRadius: '4px !important',
+		margin: '40px auto 0 auto !important',
 	},
 
 	emptyCart: {
@@ -87,17 +85,11 @@ const useStyles = makeStyles({
 		flexDirection: 'column',
 		alignItems: 'center',
 		marginTop: '40px',
-		'& img': {
-			width: '320px',
-			height: '320px',
-		},
-
 		'& .MuiButton-root': {
 			fontSize: '1.5rem !important',
 			color: '#fff !important',
 			backgroundColor: '#ff514e !important',
 			width: '200px !important',
-			marginTop: '16px !important',
 			borderRadius: '4px !important',
 		},
 	},
@@ -117,6 +109,8 @@ export default function Cart() {
 	const [isShow, setIsShow] = useState(false);
 	const userAvatar = localStorage.getItem('userImg');
 	const imgFb = localStorage.getItem('imgFb');
+
+	// const ref = useRef<any>([]);
 
 	const navigate = useNavigate();
 	const classes = useStyles();
@@ -147,6 +141,10 @@ export default function Cart() {
 		dispatch(cartActions.handleShowCart(false));
 	};
 
+	const handleRemoveFoodById = (id: string) => {
+		dispatch(shopFoodAction.RemoveFoodById(id));
+	};
+
 	return (
 		<>
 			{isShowCart && (
@@ -160,6 +158,7 @@ export default function Cart() {
 										gutterBottom
 										variant="h4"
 										component="div"
+										sx={{ fontSize: { md: '2.6rem', xs: '2rem' } }}
 									>
 										Your Cart
 									</Typography>
@@ -172,23 +171,26 @@ export default function Cart() {
 								</Grid>
 							</Grid>
 							<Divider />
-							{foodById.map((food, idx) => (
-								<Box key={idx} className={classes.boxFood} sx={{ px: 1.6 }}>
-									<img src={food.img} alt={food.name} />
-									<Box className={classes.boxTitle}>
-										<Typography variant="h5">{food.name}</Typography>
-										<Typography variant="body1">{`$${food.price}`}</Typography>
-										<Typography variant="body2">Amount: 1</Typography>
+							<div className="cart__box-main">
+								{foodById.map((food: any, idx: number) => (
+									<Box key={idx} className={classes.boxFood} sx={{ px: 1.6 }}>
+										<img src={food.img} alt={food.name} />
+										<Box className={classes.boxTitle}>
+											<Typography variant="h5">{food.name}</Typography>
+											<Typography variant="body1">{`$${food.price}`}</Typography>
+										</Box>
+										<Box
+											className={classes.itemDelete}
+											onClick={() => handleRemoveFoodById(food.id)}
+										>
+											<DeleteIcon />
+										</Box>
 									</Box>
-									<Box className={classes.itemDelete}>
-										<DeleteIcon />
-									</Box>
-								</Box>
-							))}
-
+								))}
+							</div>
 							{foodById.length <= 0 && (
 								<Box className={classes.emptyCart}>
-									<img src={EmptyCart} alt="Empty Cart" />
+									<img className="cart__box-empty__img" src={EmptyCart} alt="Empty Cart" />
 									<Typography
 										variant="h4"
 										sx={{
@@ -199,7 +201,11 @@ export default function Cart() {
 									>
 										Your Cart Is Empty
 									</Typography>
-									<Button variant="contained" onClick={handleRedirectBuyNow}>
+									<Button
+										variant="contained"
+										onClick={handleRedirectBuyNow}
+										sx={{ marginTop: { md: '16px', xs: '24px' } }}
+									>
 										Buy now
 									</Button>
 								</Box>
@@ -212,6 +218,7 @@ export default function Cart() {
 							fullWidth
 							className={classes.buttonCheckout}
 							variant="contained"
+							sx={{ width: { md: '400px', xs: '280px' } }}
 						>
 							Checkout
 						</Button>

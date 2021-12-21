@@ -1,7 +1,9 @@
 import { Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { useAppSelector } from 'app/hooks';
 import { detailTableData } from 'constants/DataTableProduct';
 import React, { useState } from 'react';
+import { selectListComment } from './DetailTabSlice';
 import DetailTabComment from './pages/DetailTabComment/DetailComment';
 import './styles.scss';
 
@@ -25,6 +27,11 @@ export default function DetailTab() {
 	const classes = useStyles();
 
 	const [isShow, setIsShow] = useState(true);
+
+	const userAvatar = localStorage.getItem('userImg');
+	const imgFb = localStorage.getItem('imgFb');
+
+	const comments = useAppSelector(selectListComment);
 
 	const handleChangeTabOne = () => {
 		setIsShow(true);
@@ -53,7 +60,7 @@ export default function DetailTab() {
 						onClick={handleChangeTabTwo}
 						variant="contained"
 					>
-						Comment
+						Comment{userAvatar || imgFb ? `(${comments.length})` : ''}
 					</Button>
 				</div>
 				<div className="detail-tab__btn-background"></div>

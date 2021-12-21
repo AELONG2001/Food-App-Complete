@@ -58,8 +58,9 @@
   }
 
   &__name {
-    font-weight: 600;
     font-size: 1.7rem;
+    line-height: 1.9rem;
+    font-weight: 600;
     margin: 8px 0 6px;
     transition: color 0.15s ease-out;
 
@@ -149,13 +150,16 @@
       visibility: visible;
       opacity: 1;
       right: 8px;
+      top: 16px;
     }
   }
 
   &_box {
     position: relative;
     height: 27.5rem;
-
+    @include respond(mobile) {
+      padding-bottom: 16px;
+    }
   }
 
   &_box:hover &__btns{
@@ -207,6 +211,9 @@
 
     color: $primary-white-color;
     background-color: $primary-red-color;
+    @include respond(mobile) {
+      top: 20px
+    }
   }
 
   &__label:before {
@@ -331,7 +338,10 @@
   }
 }
 
-
+//custom Toast
+.background__toast-success {
+  background-color: #20bf6b;
+}
 
 //custom pagination
 .MuiPagination-ul {
@@ -356,7 +366,6 @@
   background-color: #ff514e !important;
   border-radius: 4px;
 }
-
 
 
 .d-none {

@@ -1,5 +1,6 @@
 /** @format */
 
+import NotFound from 'components/common/NotFound/NotFound';
 import HomePage from 'components/HomePage/HomePage';
 import Review from 'components/Review';
 import LoginPage from 'features/Auth/Login/Login';
@@ -23,6 +24,7 @@ function App() {
 						<Route path="/popular-food" element={<PopularFood />} />
 						<Route path="/review" element={<Review />} />
 						<Route path="/login" element={<LoginPage />} />
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</ScrollToTop>
 				<Cart />

@@ -14,6 +14,25 @@
       @content;
     }
   }
+
+  @if $breakpoint == mobileMedium {
+    @media (max-width: 460px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobileSmall {
+    @media (max-width: 340px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tabletFix {
+    @media (min-width: 740px) and ( max-width: 1024px) {
+      @content;
+    }
+  }
+  
   @if $breakpoint == desktop {
     @media (min-width: 960px) {
       @content;

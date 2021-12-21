@@ -1,6 +1,29 @@
 @import "assets/styles/colors";
 @import "assets/styles/mixins";
 
+.box__comment {
+  &-main {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    padding: 32px 0;
+
+    &-heading {
+      color: $primary-black-color;
+      font-size: 1.6rem;
+      line-height: 1.8rem;
+      padding-left: 16px;
+    }
+    &-desc {
+      font-size: 1.5rem;
+      line-height: 1.7rem;
+      padding: 10px 0 0 16px;
+    }
+  }
+}
+
+
 .detail-tab-comment {
   margin-top: 50px;
 

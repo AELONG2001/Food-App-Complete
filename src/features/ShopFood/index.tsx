@@ -102,7 +102,7 @@ export default function ShopFood() {
 
 	return (
 		<Grid container maxWidth="lg" sx={{ margin: '0 auto' }}>
-			<Grid item xs={2}>
+			<Grid item xs={12} md={2}>
 				<ShopFilter
 					onSubmitFood={handleSubmitGetFood}
 					onSubmitPrice={handleSubmitPrice}
@@ -111,7 +111,7 @@ export default function ShopFood() {
 					onSubmitVote3={handleSubmitVote3}
 				/>
 			</Grid>
-			<Grid item xs={10}>
+			<Grid item xs={12} md={10}>
 				<ShopSearch onFoodSearch={onFoodSearch} />
 				<ShopProduct bestFood={foodList} getFoodById={getFoodById} />
 			</Grid>

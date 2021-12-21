@@ -17,7 +17,14 @@ import { Food } from 'models';
 import React, { ReactNode, useState } from 'react';
 // react content loader
 import ContentLoader from 'react-content-loader';
+import ToastBody from 'components/CustomToast/ToastBody';
+import { toast } from 'react-toastify';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
 import './styles.scss';
+import foodApi from 'api/foodApi';
+import { shopFoodAction } from 'features/ShopFood/shopFoodSlice';
+import { useAppDispatch } from 'app/hooks';
 
 export interface DetailInfoProps {
 	id?: string;
@@ -34,7 +41,6 @@ const useStyles = makeStyles({
 		fontSize: '1.2rem !important',
 		color: '#fff !important',
 		backgroundColor: '#ff514e !important',
-		width: '300px !important',
 		borderRadius: '20px !important',
 	},
 });
@@ -47,6 +53,8 @@ export default function DetailInfo({ id, listFood }: DetailInfoProps) {
 
 	//get price and save on state
 	let [newPrice, setNewPrice] = useState<number>();
+
+	const dispatch = useAppDispatch();
 
 	const contentLoader = () => {
 		<ContentLoader>
@@ -90,6 +98,42 @@ export default function DetailInfo({ id, listFood }: DetailInfoProps) {
 		setCount(5);
 	};
 
+	//React toastify
+	const showToast = () => {
+		return toast(
+			<ToastBody title="Success !" desc="The product has been added to cart" icon={true} />,
+			{
+				position: 'top-left',
+				className: 'background__toast-success',
+				closeButton: (
+					<div
+						style={{
+							position: 'absolute',
+							top: 8,
+							right: 8,
+							color: '#fff',
+						}}
+					>
+						<ExitToAppIcon sx={{ width: '2rem !important', height: '2rem !important' }} />
+					</div>
+				),
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			}
+		);
+	};
+
+	const handleAddFood = async (id: string) => {
+		const listFoodById = await foodApi.getFoodById(id);
+
+		dispatch(shopFoodAction.getFoodById(listFoodById));
+		showToast();
+	};
+
 	return (
 		<>
 			{listFood.map(
@@ -114,7 +158,7 @@ export default function DetailInfo({ id, listFood }: DetailInfoProps) {
 							</div>
 
 							<div className="detail-content__price">
-								<strong>${newPrice ? newPrice.toFixed(2) : food.price}</strong>
+								<strong>${newPrice ? newPrice.toFixed(0) : food.price}</strong>
 							</div>
 
 							<div className="detail-content__tags">
@@ -193,8 +237,11 @@ export default function DetailInfo({ id, listFood }: DetailInfoProps) {
 									</Button>
 								</div>
 
-								<div className="detail-content__add">
-									<Button className={classes.buttonAdd}>
+								<div className="detail-content__add" onClick={() => handleAddFood(food.id)}>
+									<Button
+										className={classes.buttonAdd}
+										sx={{ width: { md: '300px', xs: '240px' } }}
+									>
 										<AddShoppingCartIcon />
 										<span>Add to cart</span>
 									</Button>

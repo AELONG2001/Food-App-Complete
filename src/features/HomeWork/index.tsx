@@ -38,8 +38,6 @@ const useStyles = makeStyles({
 		flexDirection: 'column',
 		justifyContent: 'center',
 		position: 'absolute',
-		top: '-10px',
-		right: 40,
 		fontSize: '1.3rem',
 		width: '3rem',
 		height: '3rem',
@@ -79,15 +77,26 @@ export default function HomeWork() {
 			</Box>
 			<Grid container mt={6}>
 				{homeWork.map((item, idx) => (
-					<Grid key={idx} item xs={12} sm={6} lg={3} className={classes.homeWork}>
+					<Grid
+						key={idx}
+						item
+						xs={12}
+						sm={6}
+						lg={3}
+						className={classes.homeWork}
+						sx={{ p: { xs: '12px' } }}
+					>
 						<img src={item.img} alt={item.title} />
-						<Box className={classes.step}>
+						<Box
+							className={classes.step}
+							sx={{ top: { md: '4px', xs: '12px' }, right: { md: 40, xs: 80 } }}
+						>
 							<span>{`0${item.step}`}</span>
 							<span>{item.desc}</span>
 						</Box>
 						<Box
 							className={classes.arrowItem}
-							sx={{ backgroundImage: `url('${item.arrow}')` }}
+							sx={{ backgroundImage: { md: `url('${item.arrow}')`, xs: 'unset' } }}
 						></Box>
 						<Box>
 							<Typography variant="h5" align="center" className={classes.typoInfo}>

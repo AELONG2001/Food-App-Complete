@@ -1,6 +1,11 @@
 @import "assets/styles/colors";
 @import "assets/styles/mixins";
 
+.related-main {
+  @include respond(mobile) {
+    width: 100%;
+  }
+}
 
 .related-heading {
   font-size: 2.4rem;
@@ -15,8 +20,30 @@
     display: -webkit-flex;
     justify-content: center;
     -webkit-justify-content: center;
+    @include respond(tabletFix) {
+       display: grid;
+       margin-right: 0;
+    }
+    @include respond(mobileMedium) {
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
 }
 
 .shop-product_box-related {
-    width: 200px;
+  width: 200px;
+  @include respond(tabletFix) {
+    margin-right: 0;
+    width: 220px;
+  }
+  @include respond(mobileMedium) {
+    padding: 10px 0 0 0;
+    margin-right: 0;
+    width: 320px;
+  }
+
+  @include respond(mobileMedium) {
+    width: 280px;
+  }
 }

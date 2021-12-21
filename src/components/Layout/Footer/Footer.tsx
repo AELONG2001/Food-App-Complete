@@ -54,7 +54,7 @@ function Footer() {
 
 							<div className="footer__contact">
 								<SpeakerNotesIcon className="footer__contact-icon" />
-								<span className="footer__contact-txt">longkm2001@gmail.com</span>
+								<span className="footer__contact-txt">longkm2708@gmail.com</span>
 							</div>
 
 							<div className="footer__contact">

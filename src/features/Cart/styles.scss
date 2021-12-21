@@ -10,4 +10,19 @@
     height: 100vh;
     background-color: $primary-white-color;
     z-index: 200;
+    &-main {
+        overflow-y: auto;
+        max-height: 500px;
+    }
+    @include respond(mobile) {
+        width: 100%;
+    }
+    &-empty__img {
+        width: 320px;
+        height: 320px;
+        @include respond(mobile) {
+            width: 240px;
+            height: 240px;
+        }
+    }
 }

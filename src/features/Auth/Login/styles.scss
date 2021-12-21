@@ -40,6 +40,7 @@
   background-repeat: no-repeat;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
   &-box {
     position: absolute;
     @include positionCenter;
@@ -48,6 +49,33 @@
     background-color: $primary-white-color;
     border-radius: 8px;
     z-index: 100;
+    @include respond(mobile) {
+        width: 80%;
+        height: 90%;
+    }
+
+    @include respond(mobileMedium) {
+        width: 100%;
+        height: 100%;
+    }
+
+    @include respond(mobileSmall) {
+        width: 100%;
+        height: 100%;
+    }
+
+    &-main {
+        margin-top: 24px;
+
+       @include respond(mobileMedium) {
+          margin-top: 50px;
+       }
+
+        @include respond(mobileSmall) {
+          margin-top: 20px;
+       }
+    }
+
     &-img {
         width: 72px;
         height: 72px;
@@ -60,7 +88,11 @@
             color: $primary-black-color;
             text-align: center;
             font-size: 2.8rem;
+            line-height: 3rem;
             margin: 10px 0;
+            @include respond(mobile) {
+                font-size: 2rem;
+            }
         }
     }
 
@@ -89,10 +121,11 @@
 
     &-content {
         position: absolute;
+        top: 56% !important;
         @include positionCenter;
         @include d-flex;
         flex-direction: column;
-        margin-top: 10px;
+        margin-top: 16px;
        &-p {
            position: relative;
             @include d-flex;
@@ -176,11 +209,10 @@
 }
 
 
-//custom Toastify
-.Toastify {
-    position: absolute;
-    top: 0;
-    right: 0;
+//custom Toast
+.background__toast-setting {
+  background-color: #3598db;
 }
+
 
 

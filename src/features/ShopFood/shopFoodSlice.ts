@@ -7,7 +7,8 @@ export interface ShopFood {
 	loading: boolean;
 	filter: ListParams;
 	list: Food[];
-	foodById: Food[];
+	id: any;
+	foodById: any;
 }
 
 const initialState: ShopFood = {
@@ -17,6 +18,7 @@ const initialState: ShopFood = {
 		_limit: 16,
 	},
 	list: [],
+	id: null,
 	foodById: [],
 };
 
@@ -62,12 +64,25 @@ const shopFoodSlice = createSlice({
 
 		setFilterWidthDebounce(state, action: PayloadAction<ListParams>) {},
 
-		getFoodById(state, action: PayloadAction<string>) {
-			const idFood = action.payload;
-			const listFood = state.list;
+		getIdFood(state, action: PayloadAction<number>) {
+			state.id = action.payload;
+		},
 
-			const newFood = listFood.filter((food) => food.id === idFood);
-			state.foodById = newFood;
+		getFoodById(state, action: PayloadAction<Food[]>) {
+			const newFood = action.payload;
+			return {
+				...state,
+				foodById: [...state.foodById, newFood] as any,
+			};
+		},
+
+		RemoveFoodById(state, action: PayloadAction<string>) {
+			const idFood = action.payload;
+			const newFood = state.foodById.filter((food: any) => food.id !== idFood);
+			return {
+				...state,
+				foodById: [...newFood],
+			};
 		},
 	},
 });
@@ -76,6 +91,7 @@ export const shopFoodAction = shopFoodSlice.actions;
 
 export const selectFoodLoading = (state: RootState) => state.food.loading;
 export const selectFoodList = (state: RootState) => state.food.list;
+export const selectId = (state: RootState) => state.food.id;
 export const selectFoodById = (state: RootState) => state.food.foodById;
 export const selectFoodFilter = (state: RootState) => state.food.filter;
 

@@ -3,12 +3,21 @@
 
 .navbar {
 
+  &__cart {
+     @include respond(tablet) {
+       margin-right: 0 !important;
+    }
+  }
+
    &__account {
      cursor: pointer;
       &:hover .navbar__account-options {
         visibility: visible;
         opacity: 1;
         top: 37px !important;
+      }
+      @include respond(tablet) {
+        display: none;
       }
    }
   &__account-options {
@@ -81,12 +90,109 @@
 }
 
 
+//navbar Mobile
+.burger-nav {
+  @include respond(desktop) {
+    display: none;
+  }
+  
+  z-index: 140;
+
+  &__overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    height: 100%;
+    width: 80%;
+    transform: translateX(-100%);
+
+    background-color: rgba(0, 0, 0, 0.97);
+
+    transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  &__content.active {
+    transform: translateX(0);
+  }
+
+  &__list {
+    padding-left: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    padding: 16px;
+
+    color: $primary-white-color;
+
+    cursor: pointer;
+
+    @include respond(phone) {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__item svg {
+    font-size: 2.2rem;
+    margin-right: 8px;
+
+    @include respond(phone) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba($primary-white-color, 0.2);
+  }
+
+  &__account {
+    display: flex;
+    align-items: center;
+  }
+
+  &__account &__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    @include respond(phone) {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  &__username {
+    font-size: 1.4rem;
+    margin-left: 8px;
+
+    color: $primary-white-color;
+
+    @include respond(phone) {
+      font-size: 1.3rem;
+    }
+  }
+}
+
 .MuiTooltip-tooltipPlacementBottom {
   display: none
 }
 
 //custom color login
 .login_btn {
-     color: $primary-white-color;
+  color: $primary-white-color;
 }
 
